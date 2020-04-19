@@ -8,8 +8,8 @@ on:
     paths:
       - 'openwrt/x86_64/.config'
       - '.github/workflows/B&U-Openwrt-original-x86_64.yml'
-  schedule:
-        - cron: 0 */4 * * *
+ # schedule:
+      #  - cron: 0 */4 * * *
 
 jobs:
   build:
@@ -36,12 +36,7 @@ jobs:
     - name: Clone source and install
       run: |
         git clone https://github.com/openwrt/openwrt
-        git clone https://github.com/coolsnowwolf/lede
         cd openwrt
-        cp -rf ../lede/package/lean/ package/lean
-        cp -rf ../lede/tools/upx/ tools/upx
-        cp -rf ../lede/tools/ucl/ tools/ucl
-        echo -e 'tools-y += ucl upx\n$(curdir)/upx/compile := $(curdir)/ucl/compile' >>tools/Makefile
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -49,7 +44,7 @@ jobs:
       run: |
         cd openwrt
         curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/openwrt/x86_64/.config >.config
-        bash <(curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/openwrt/x86_64/diy.sh)
+        bash <(curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/openwrt/diy.sh)
         ./scripts/feeds install -a
         make defconfig
 

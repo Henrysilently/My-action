@@ -42,7 +42,7 @@ jobs:
       run: |
         cd lede
         curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/lean-lede/rpi4/.config >.config
-        bash <(curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/lean-lede/rpi/diy.sh)
+        bash <(curl -fsSL https://raw.githubusercontent.com/1orz/My-action/master/lean-lede/diy.sh)
         ./scripts/feeds install -a
         make defconfig
     - name: Download package
