@@ -5,6 +5,8 @@
 mkdir -p package/custom
 cd package/custom
 # git clone https://github.com/coolsnowwolf/packages
+git clone https://github.com/kenzok8/small
+git clone https://github.com/kenzok8/openwrt-packages
 git clone https://github.com/Lienol/openwrt-package
 git clone https://github.com/fw876/helloworld
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial
@@ -18,9 +20,6 @@ cd ../../
 # Modify default IP
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 sed -i 's/192.168/10.0/g' package/base-files/files/bin/config_generate
-
-# Modify default Theme
-sed -i 's/bootstrap/argon/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # Add some default settings
 #\cp -rf ../lede/zzz-default-settings package/lean/default-settings/files/zzz-default-settings
